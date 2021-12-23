@@ -1,11 +1,11 @@
 from flask import Flask, request
-from my_app.bd.models import db
-from my_app.bd import db_funs
+# from my_app.bd.models import db
+# from my_app.bd import db_funs
 
 def create_app():
     app = Flask(__name__)
     app.config.from_pyfile('bd/config.py')
-    db.init_app(app)
+#    db.init_app(app)
 
     @app.route('/add', methods=['PUT'])
     def add_news():
