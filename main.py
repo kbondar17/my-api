@@ -4,7 +4,7 @@ from flask import Flask, request
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_pyfile('bd/config.py')
+    # app.config.from_pyfile('bd/config.py')
 #    db.init_app(app)
 
     @app.route('/add', methods=['PUT'])
