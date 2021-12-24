@@ -2,6 +2,8 @@ from flask import Flask, request
 # from bd.models import db
 # from bd import db_funs
 import os
+import logging
+
 def create_app():
     app = Flask(__name__)
     # app.config.from_pyfile('bd/config.py')
@@ -16,6 +18,8 @@ def create_app():
 
     @app.route("/")
     def hello():
+        logging.warn('логи: послали гет на главную')
+        print('послали гет на главную')
         return 'привет'
 
 
