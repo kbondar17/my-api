@@ -26,9 +26,9 @@ class Users(db.Model):
         return f'User.id:{self.title}'
 
 
-def create_db():
-    print('в models создаем БД')
+# def create_db():
+#     print('в models создаем БД')
+#
+if __name__ == '__main__': # берем все таблицы и создаем
+    print('пытаюсь создать базу!!!')
     Base.metadata.create_all(bind=engine)
-
-# if __name__ == '__main__': # берем все таблицы и создаем
-#     pass

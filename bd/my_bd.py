@@ -3,7 +3,11 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session
 import os
 
-engine = create_engine(os.getenv('DATABASE_URL')) # echo - логирование sql запросов
+try:
+    from bd.my_postgress import uri
+except Exception as ex:
+    print(ex)
+engine = create_engine(os.getenv('DATABASE_URL',uri)) # echo - логирование sql запросов
 
 db_session = scoped_session(sessionmaker(bind=engine))
 
