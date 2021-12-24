@@ -6,7 +6,9 @@ import os
 try:
     from bd.my_postgress import uri
 except Exception as ex:
+    uri = ''
     print(ex)
+
 engine = create_engine(os.getenv('DATABASE_URL',uri)) # echo - логирование sql запросов
 
 db_session = scoped_session(sessionmaker(bind=engine))
