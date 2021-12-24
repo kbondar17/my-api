@@ -15,16 +15,16 @@ def add_news(data:list):
     '''
     for article in data:
         # распарсили дату
+        if 'published' in article.keys():
+            if isinstance(article['published'],list):
+                published = arrow.get(*article['published'][:-2]).datetime
 
-        if isinstance(article['published'],list):
-            published = arrow.get(*article['published'][:-2]).datetime
-
-        elif isinstance(article['published'],str):
-            published = arrow.get(article['published'],'DD MMM YYYY HH:mm:ss').datetime
+            elif isinstance(article['published'],str):
+                published = arrow.get(article['published'],'DD MMM YYYY HH:mm:ss').datetime
 
         else:
             print('неправильный формат даты---', article['published'])
-
+            published = 'no date'
         # проверили, что сочетания ссылка и автор нет в БД. (у одной статьи может быть несколько авторов)
         existing = News.query.filter(News.url == article['url']).filter(News.author == article['author']).count()
         if not existing:
