@@ -51,16 +51,17 @@ def get_latest_news(how_many = 3):
 
 
 if __name__ == "__main__":
-    add_news([
-        {
-            'title': 'зааг',
-            'author': 'аффтор',
-            'url': 'ссылка',
-            'source_name': 'имя',
-            'published': [2021,12,1,1,1,1]
-
-        }
-    ])
+    pass
+    # add_news([
+    #     {
+    #         'title': 'зааг',
+    #         'author': 'аффтор',
+    #         'url': 'ссылка',
+    #         'source_name': 'имя',
+    #         'published': [2021,12,1,1,1,1]
+    #
+    #     }
+    # ])
 
     # news = get_latest_news(10)
     # for i, n in enumerate(news):

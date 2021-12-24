@@ -12,8 +12,9 @@ def create_app():
         print('-- вот request.json:\n',request.json)
         return f'вот твой кал --- {request.json}'
 
+
     @app.route('/test_add', methods=['PUT'])
-    def add_news():
+    def test_add_news():
         db_funs.add_news([
             {
                 'title': 'зааг',
@@ -21,7 +22,6 @@ def create_app():
                 'url': 'ссылка',
                 'source_name': 'имя',
                 'published': [2021, 12, 1, 1, 1, 1]
-
             }
         ])
 
