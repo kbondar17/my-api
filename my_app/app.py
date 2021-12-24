@@ -15,17 +15,18 @@ def create_app():
     def get_news():
         news = db_funs.get_latest_news(10)
         print('---news---',news)
-        return 'news'
+        return news
 
 
     @app.route('/test_add', methods=['PUT'])
     def test_add_news():
+
         db_funs.add_news([
             {
-                'title': 'зааг',
-                'author': 'аффтор',
-                'url': 'ссылка',
-                'source_name': 'имя',
+                'title': 'зааг_3',
+                'author': 'аффтор_3',
+                'url': 'ссылка_3',
+                'source_name': 'имя_3',
                 'published': [2021, 12, 1, 1, 1, 1]
             }
         ])
