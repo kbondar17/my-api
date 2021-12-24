@@ -8,8 +8,8 @@ try:
 except Exception as ex:
     uri = ''
     print('---ожидаемая ошибка',ex)
-
-engine = create_engine(os.getenv('DATABASE_URL',uri)) # echo - логирование sql запросов
+print('uri---',uri)
+engine = create_engine(os.getenv('DATABASE_URL',uri), echo = True) # echo - логирование sql запросов
 
 db_session = scoped_session(sessionmaker(bind=engine))
 

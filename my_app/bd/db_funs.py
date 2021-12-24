@@ -1,6 +1,6 @@
 '''тут функции для обращения к БД'''
 
-from my_app.bd.models import db, News
+from my_app.bd.models import News, db_session
 import arrow
 
 def add_news(data:list):
@@ -31,8 +31,8 @@ def add_news(data:list):
             # добавили в БД
             new = News(title = article['title'], author=article['author'],url=article['url'],
                        source_name=article['source_name'], published = published)
-            db.session.add(new)
-            db.session.commit()
+            db_session.add(new)
+            db_session.commit()
             print('добавили в БД:', article['title'])
         else:
             print('уже есть---', article['url'])
@@ -44,7 +44,7 @@ def get_latest_news(how_many = 3):
     атрибуты (заголовок, ссылка и тд) можно получить через точку.
     '''
     # news = db.session.query(News).order_by(News.published.desc())[:how_many]
-    news = db.session.query(News).order_by(News.published.desc())[:how_many]
+    news = db_session.query(News).order_by(News.published.desc())[:how_many]
     return news
 
 
