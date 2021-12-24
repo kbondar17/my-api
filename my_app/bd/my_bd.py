@@ -4,10 +4,10 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 import os
 
 try:
-    from bd.my_postgress import uri
+    from my_app.bd.my_postgress import uri
 except Exception as ex:
     uri = ''
-    print(ex)
+    print('---ожидаемая ошибка',ex)
 
 engine = create_engine(os.getenv('DATABASE_URL',uri)) # echo - логирование sql запросов
 

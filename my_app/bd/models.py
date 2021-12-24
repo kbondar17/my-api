@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from bd.my_bd import Base, engine
+from my_app.bd.my_bd import Base, engine
 db = SQLAlchemy()
 
 class News(db.Model):
@@ -26,9 +26,7 @@ class Users(db.Model):
         return f'User.id:{self.title}'
 
 
-# def create_db():
-#     print('в models создаем БД')
-#
+
 if __name__ == '__main__': # берем все таблицы и создаем
     print('пытаюсь создать базу!!!')
     Base.metadata.create_all(bind=engine)

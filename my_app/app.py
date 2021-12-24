@@ -1,7 +1,6 @@
 from flask import Flask, request
-from bd.models import db
+from my_app.bd.models import db
 # from bd import db_funs
-import os
 import logging
 
 def create_app():
