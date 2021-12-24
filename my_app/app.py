@@ -1,11 +1,11 @@
 from flask import Flask, request
-# from my_app.bd.models import db
-# from my_app.bd import db_funs
-
+# from bd.models import db
+# from bd import db_funs
+import os
 def create_app():
     app = Flask(__name__)
     # app.config.from_pyfile('bd/config.py')
-#    db.init_app(app)
+    # db.init_app(app)
 
     @app.route('/add', methods=['PUT'])
     def add_news():
@@ -16,7 +16,7 @@ def create_app():
 
     @app.route("/")
     def hello():
-        return "Привет!"
+        return f"{os.getenv('DATABASE_URL','не достал url')}"
 
 
     return app
