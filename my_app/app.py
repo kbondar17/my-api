@@ -20,7 +20,7 @@ def create_app():
     @app.route('/add', methods=['PUT'])
     def test_add_news():
         content_to_add = request.json
-        print('---content_to_add---',content_to_add)
+        print('----content_to_add---',content_to_add)
         db_funs.add_news(content_to_add)
         return f'добавили {content_to_add["title"]}'
 
