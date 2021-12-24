@@ -1,5 +1,5 @@
 from flask import Flask, request
-# from bd import db_funs
+from my_app.bd import db_funs
 import logging
 
 def create_app():
@@ -12,6 +12,20 @@ def create_app():
         print('-- вот request.json:\n',request.json)
         return f'вот твой кал --- {request.json}'
 
+    @app.route('/test_add', methods=['PUT'])
+    def add_news():
+        db_funs.add_news([
+            {
+                'title': 'зааг',
+                'author': 'аффтор',
+                'url': 'ссылка',
+                'source_name': 'имя',
+                'published': [2021, 12, 1, 1, 1, 1]
+
+            }
+        ])
+
+        return 'добавили'
 
     @app.route("/")
     def hello():

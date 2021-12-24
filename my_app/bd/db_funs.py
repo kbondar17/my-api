@@ -10,12 +10,14 @@ def add_news(data:list):
         'author': '',
         'link': '',
         'source_name':'',
-        'publication_date': '',
-        'publication_date_parsed': ''
+        "publication": ''
+
+
         }
     '''
     for article in data:
         # распарсили дату
+
         if isinstance(article['published'],list):
             published = arrow.get(*article['published'][:-2]).datetime
 
@@ -49,6 +51,17 @@ def get_latest_news(how_many = 3):
 
 
 if __name__ == "__main__":
-    news = get_latest_news(10)
-    for i, n in enumerate(news):
-        print(f"{i}. {n}")
+    add_news([
+        {
+            'title': 'зааг',
+            'author': 'аффтор',
+            'url': 'ссылка',
+            'source_name': 'имя',
+            'published': [2021,12,1,1,1,1]
+
+        }
+    ])
+
+    # news = get_latest_news(10)
+    # for i, n in enumerate(news):
+    #     print(f"{i}. {n}")
