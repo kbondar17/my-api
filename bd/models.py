@@ -25,5 +25,10 @@ class Users(db.Model):
     def __repr__(self): # тут пишем как будет отображатся при печати
         return f'User.id:{self.title}'
 
-if __name__ == '__main__': # берем все таблицы и создаем
+
+def create_db():
+    print('в models создаем БД')
     Base.metadata.create_all(bind=engine)
+
+# if __name__ == '__main__': # берем все таблицы и создаем
+#     pass
