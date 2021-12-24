@@ -16,7 +16,7 @@ def create_app():
 
     @app.route("/")
     def hello():
-        return f"{os.getenv('DATABASE_URL','не достал url')}"
+        return 'привет'
 
 
     return app
