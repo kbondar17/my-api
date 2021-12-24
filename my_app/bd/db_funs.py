@@ -11,8 +11,6 @@ def add_news(data:list):
         'link': '',
         'source_name':'',
         "publication": ''
-
-
         }
     '''
     for article in data:

@@ -19,18 +19,9 @@ def create_app():
 
     @app.route('/test_add', methods=['PUT'])
     def test_add_news():
-
-        db_funs.add_news([
-            {
-                'title': 'зааг_3',
-                'author': 'аффтор_3',
-                'url': 'ссылка_3',
-                'source_name': 'имя_3',
-                'published': [2021, 12, 1, 1, 1, 1]
-            }
-        ])
-
-        return 'добавили'
+        content_to_add = request.json
+        db_funs.add_news([content_to_add])
+        return f'добавили {content_to_add["title"]}'
 
     @app.route("/")
     def hello():
