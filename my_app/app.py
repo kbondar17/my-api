@@ -15,7 +15,7 @@ def create_app():
     def get_news():
         news = db_funs.get_latest_news(10)
         print('---news---',news)
-        return news
+        return str(news)
 
 
     @app.route('/test_add', methods=['PUT'])
