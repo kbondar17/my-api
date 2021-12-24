@@ -46,7 +46,7 @@ def get_latest_news(how_many = 3):
     атрибуты (заголовок, ссылка и тд) можно получить через точку.
     '''
     # news = db.session.query(News).order_by(News.published.desc())[:how_many]
-    news = db_session.query(News).order_by(News.published.desc())[:how_many]
+    news = db_session.query(News).all()#.order_by(News.published.desc())[:how_many]
     return news
 
 

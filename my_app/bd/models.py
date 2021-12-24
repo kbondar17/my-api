@@ -32,9 +32,9 @@ class News(Base):
 
 if __name__ == '__main__': # берем все таблицы и создаем
     print('пытаюсь создать базу!!!')
-    Base.metadata.create_all(bind=engine)
-    # new = News(title = "заааг", author = "автоор")
-    # db_session.add(new)
-    # print('new--', db_session.new)  # напечатать, что нового
-    # db_session.commit()
-    # print(News.__table__)
+    # Base.metadata.create_all(bind=engine)
+    new = News(title = "заааг_2", author = "автоор_2")
+    db_session.add(new)
+    print('new--', db_session.new)  # напечатать, что нового
+    db_session.commit()
+    print(News.__table__)

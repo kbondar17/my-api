@@ -5,7 +5,6 @@ import logging
 def create_app():
     app = Flask(__name__)
 
-
     @app.route('/add', methods=['PUT'])
     def add_news():
         print('-- вошли в add_news')
