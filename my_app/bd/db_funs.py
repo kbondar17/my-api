@@ -23,7 +23,7 @@ def add_news(data:list):
                 published = arrow.get(article['published'],'DD MMM YYYY HH:mm:ss').datetime
 
         else:
-            print('неправильный формат даты---', article['published'])
+            print('неправильный формат даты')
             published = 'no date'
         # проверили, что сочетания ссылка и автор нет в БД. (у одной статьи может быть несколько авторов)
         existing = News.query.filter(News.url == article['url']).filter(News.author == article['author']).count()
