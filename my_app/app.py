@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, 
 from my_app.bd import db_funs
 import logging
 
@@ -14,7 +14,7 @@ def create_app():
     @app.route('/news', methods=['GET'])
     def get_news():
         news = db_funs.get_latest_news(10)
-        return jsonify(news)
+        return str(news)
 
 
     @app.route('/test_add', methods=['PUT'])
