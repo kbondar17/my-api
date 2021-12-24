@@ -2,7 +2,7 @@ from my_app.bd import db_funs
 from flask import Flask,request
 import logging
 import json
-
+from sqlalchemy import desc, inspect
 def create_app():
     app = Flask(__name__)
 
@@ -12,14 +12,17 @@ def create_app():
     #     print('-- вот request.json:\n',request.json)
     #     return f'вот твой кал --- {request.json}'
 
+    def row_as_dict(query_row):
+        return {column.key: str(getattr(query_row, column.key))
+                for column in inspect(query_row).mapper.column_attrs}
 
-    def query_as_json(self, query_result):
+    def query_as_json(query_result):
         try:
-            return json.dumps(self._row_as_dict(query_result))
+            return json.dumps(row_as_dict(query_result))
         except (AttributeError, TypeError):
             final_list = []
             for q in query_result:
-                final_list.append(self._row_as_dict(q))
+                final_list.append(row_as_dict(q))
             return json.dumps(final_list)
 
     @app.route('/news', methods=['GET'])
