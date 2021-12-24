@@ -5,11 +5,11 @@ import logging
 def create_app():
     app = Flask(__name__)
 
-    @app.route('/add', methods=['PUT'])
-    def add_news():
-        print('-- вошли в add_news')
-        print('-- вот request.json:\n',request.json)
-        return f'вот твой кал --- {request.json}'
+    # @app.route('/add', methods=['PUT'])
+    # def add_news():
+    #     print('-- вошли в add_news')
+    #     print('-- вот request.json:\n',request.json)
+    #     return f'вот твой кал --- {request.json}'
 
     @app.route('/news', methods=['GET'])
     def get_news():
@@ -17,12 +17,13 @@ def create_app():
         return str(news)
 
 
-    @app.route('/test_add', methods=['PUT'])
+    @app.route('/add', methods=['PUT'])
     def test_add_news():
         content_to_add = request.json
         print('---content_to_add---',content_to_add)
-        db_funs.add_news([content_to_add])
+        db_funs.add_news(content_to_add)
         return f'добавили {content_to_add["title"]}'
+
 
     @app.route("/")
     def hello():
