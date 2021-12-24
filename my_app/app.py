@@ -1,5 +1,5 @@
-from flask import Flask, request
 from my_app.bd import db_funs
+from flask import Flask,request
 import logging
 
 def create_app():
