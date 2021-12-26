@@ -1,8 +1,9 @@
 from my_app.bd import db_funs
-from flask import Flask,request
+from flask import Flask, request, jsonify
 import logging
 import json
 from sqlalchemy import desc, inspect
+
 def create_app():
     app = Flask(__name__)
 
@@ -12,23 +13,23 @@ def create_app():
     #     print('-- вот request.json:\n',request.json)
     #     return f'вот твой кал --- {request.json}'
 
-    def row_as_dict(query_row):
-        return {column.key: str(getattr(query_row, column.key))
-                for column in inspect(query_row).mapper.column_attrs}
 
-    def query_as_json(query_result):
-        try:
-            return json.dumps(row_as_dict(query_result))
-        except (AttributeError, TypeError):
-            final_list = []
-            for q in query_result:
-                final_list.append(row_as_dict(q))
-            return json.dumps(final_list)
 
     @app.route('/news', methods=['GET'])
     def get_news():
-        news = db_funs.get_latest_news(10)
-        return query_as_json(news)
+        data = db_funs.get_latest_news()
+        if data:
+            return { 'news' : [db_funs.convert_news(e) for e in data] }
+        return 'новостей нет'
+
+    @app.route('/authors', methods=['GET'])
+    def get_all_authors():
+        return db_funs.get_all_authors()
+
+    @app.route('/news/<int:author_id>', methods=['GET'])
+    def get_news_of_author():
+        '''айди-имя'''
+        author_id = ''
 
 
     @app.route('/add', methods=['PUT'])
